@@ -21,6 +21,43 @@
 
 
 
+
+    <script>
+        // Create a function to send tracking data to the server
+        function trackVisitor(data) {
+            fetch('/track-visitor', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Visitor tracked successfully');
+                    } else {
+                        console.error('Error tracking visitor');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error tracking visitor:', error);
+                });
+        }
+
+        // Capture relevant visitor information and send it to the server
+        window.onload = function() {
+            var visitorData = {
+                url: window.location.href,
+                userAgent: navigator.userAgent,
+                referrer: document.referrer,
+                timestamp: new Date().toISOString()
+            };
+            trackVisitor(visitorData);
+        };
+    </script>
+
+
+
 </head>
 
 <!-- Google tag (gtag.js) -->
