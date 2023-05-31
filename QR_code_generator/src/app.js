@@ -31,6 +31,8 @@ app.post("/scan", (req, res, next) => {
 
 
         console.log('{', input_text ,'}');
+        console.log("End...........................................................")
+        console.log()
 
 
         res.render("scan", {
