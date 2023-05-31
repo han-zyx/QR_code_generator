@@ -28,10 +28,16 @@ app.post("/scan", (req, res, next) => {
     const input_text = req.body.text;
     qrcode.toDataURL(input_text, (err, src) => {
         if (err) res.send("Something went wrong!!");
+
+
+        console.log('{', input_text ,'}');
+
+
         res.render("scan", {
             qr_code: src,
         });
     });
+
 });
 
 
@@ -40,8 +46,14 @@ app.post('/track-visitor', (req, res) => {
     const visitorData = req.body;
     // Process and store the visitor data as desired (e.g., in a database, log file, etc.)
     console.log(visitorData);
+
     res.sendStatus(200);
 });
+
+
+
+
+
 
 
 app.listen(port,console.log(`Listening on port ${port}`));
