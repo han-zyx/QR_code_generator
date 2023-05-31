@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const ejs = require('ejs');
 const path =  require('path');
-const qrcode = require('qrcode')
+const qrcode = require('qrcode');
+
 
 const port = process.env.port || 3800 ;
 
@@ -29,6 +30,8 @@ app.post("/scan", (req, res, next) => {
         });
     });
 });
+
+
 
 
 app.listen(port,console.log(`Listening on port ${port}`));
