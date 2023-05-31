@@ -5,6 +5,9 @@ const path =  require('path');
 const qrcode = require('qrcode');
 
 
+app.use(express.json());
+
+
 const port = process.env.port || 3800 ;
 
 app.use(express.json());
@@ -32,6 +35,13 @@ app.post("/scan", (req, res, next) => {
 });
 
 
+
+app.post('/track-visitor', (req, res) => {
+    const visitorData = req.body;
+    // Process and store the visitor data as desired (e.g., in a database, log file, etc.)
+    console.log(visitorData);
+    res.sendStatus(200);
+});
 
 
 app.listen(port,console.log(`Listening on port ${port}`));
